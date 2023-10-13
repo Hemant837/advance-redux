@@ -1,0 +1,34 @@
+.product-item {
+    margin: 0 auto;
+    list-style-type: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 40%;
+  }
+  .product-item header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .product-item header p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .product-item p {
+    margin: 10px 0;
+  }
+  
+  .product-item .action-button {
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .product-item .action-button:hover {
+    background-color: #333;
+  }
+  

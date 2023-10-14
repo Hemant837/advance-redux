@@ -1,13 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import CartItem from "./CartItem";
+import { useSelector } from 'react-redux';
 
-const Cart = () => {
+import Card from '../UI/Card';
+import classes from './Cart.module.css';
+import CartItem from './CartItem';
+
+const Cart = (props) => {
   const cartItems = useSelector((state) => state.cart.items);
 
   return (
-    <div>
-      <h2 className="cart-heading">Shopping Cart</h2>
+    <Card className={classes.cart}>
+      <h2>Your Shopping Cart</h2>
       <ul>
         {cartItems.map((item) => (
           <CartItem
@@ -22,7 +24,7 @@ const Cart = () => {
           />
         ))}
       </ul>
-    </div>
+    </Card>
   );
 };
 

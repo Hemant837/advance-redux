@@ -1,25 +1,41 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart-slice";
 import "./CartItem.css";
 
-const CartItem = () => {
+const CartItem = (props) => {
+  const dispatch = useDispatch();
+
+  const { title, quantity, total, price, id } = props.item;
+
+  const removeItemHandler = () => {
+    dispatch(cartActions.removeItemFromCart(id));
+  };
+
+  const addItemHandler = () => {
+    dispatch(
+      cartActions.addItemToCart({
+        id: id,
+        title: title,
+        price: price,
+      })
+    );
+  };
+
   return (
     <div className="cart">
-      <h2 className="cart-heading">Shopping Cart</h2>
-      <div className="cart-items">
-        <div className="cart-item">
-          <div className="cart-item-head">
-            <p className="cart-title">Test Item</p>
-            <p className="cart-price">$9.99</p>
-          </div>
-          <div className="cart-item-foot">
-            <p className="quantity">x3</p>
-            <div className="action-buttons">
-              <button>-</button>
-              <button>+</button>
-            </div>
-          </div>
+      <div className="cart-item-head">
+        <p className="cart-title">{title}</p>
+        <p className="cart-price">${price}</p>
+      </div>
+      <div className="cart-item-foot">
+        <p className="quantity">x{quantity}</p>
+        <div className="action-buttons">
+          <button onClick={removeItemHandler}>-</button>
+          <button onClick={addItemHandler}>+</button>
         </div>
       </div>
+      ${total}
     </div>
   );
 };

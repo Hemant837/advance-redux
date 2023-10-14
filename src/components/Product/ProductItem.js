@@ -1,16 +1,32 @@
 import React from "react";
+import { cartActions } from "../../store/cart-slice";
 import "./ProductItem.css";
+import { useDispatch } from "react-redux";
 
 const ProductItem = (props) => {
-  const { product } = props;
+  const dispatch = useDispatch();
+  const { title, price, description, id } = props;
+
+  const addToCartHandler = () => {
+    dispatch(
+      cartActions.addItemToCart({
+        id: props.id,
+        title: props.title,
+        price: props.price,
+      })
+    );
+  };
+
   return (
     <li className="product-item">
       <header>
-        <p>{product.name}</p>
-        <p>{product.price}</p>
+        <h3>{title}</h3>
+        <p>${price}</p>
       </header>
-      <p>{product.description}</p>
-      <div className="action-button">Add to Cart</div>
+      <p>{description}</p>
+      <div className="action-button" onClick={addToCartHandler}>
+        Add to Cart
+      </div>
     </li>
   );
 };

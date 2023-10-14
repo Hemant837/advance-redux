@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
-import CartItem from "./components/Cart/CartItem";
+import Cart from "./components/Cart/Cart";
 import Products from "./components/Product/Products";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <Fragment>
       <Navbar />
-      {showCart && <CartItem />}
+      {showCart && <Cart />}
       <Products />
     </Fragment>
   );
